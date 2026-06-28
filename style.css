@@ -105,9 +105,12 @@ footer {
 .profile-img {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
+    border-radius: 50%;       /* Memotong bucu imej menjadi bulat sempurna */
+    object-fit: cover;         /* PENTING: Mengekalkan nisbah asal supaya gambar tidak penyek */
+    object-position: center;   /* Memastikan bahagian tengah gambar sentiasa fokus */
     border: 5px solid #38bdf8;
+    display: block;            /* Mengubah elemen kepada block level */
+    margin: 0 auto;            /* Memastikan kedudukan imej berada di tengah-tengah */
 }
 
 /* Table Styles (Profile Page) */
