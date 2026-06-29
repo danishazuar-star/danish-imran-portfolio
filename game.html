@@ -5,6 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Racer 2D | Mini Game</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Gaya khusus untuk butang kawalan skrin sentuh di telefon */
+        .mobile-controls {
+            display: none; /* Disembunyikan secara lalai pada komputer */
+            gap: 2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .touch-btn {
+            background: rgba(0, 240, 255, 0.1);
+            border: 2px solid #00f0ff;
+            color: #00f0ff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            padding: 1rem 2.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .touch-btn:active {
+            background: #00f0ff;
+            color: #000;
+            box-shadow: 0 0 25px #00f0ff;
+        }
+
+        /* Paparkan butang kawalan HANYA jika dibuka menggunakan peranti skrin sentuh / telefon */
+        @media (max-width: 768px) {
+            .mobile-controls {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,38 +58,39 @@
         </nav>
     </header>
 
-    <main style="max-width: 800px; margin: 3rem auto; padding: 0 2rem; min-height: 80vh; text-align: center;">
-        
-        <!-- CARD MAIN FOR GAME CONTAINER -->
-        <div style="background: #131a26; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+    <main style="max-width: 800px; margin: 3rem auto; padding: 0 1rem; min-height: 80vh; text-align: center;">
+        <div style="background: #131a26; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 2rem 1.5rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; align-items: center; gap: 1rem;">
             
             <h1 style="font-size: 2.2rem; font-weight: 900; background: linear-gradient(to right, #fff, #ff0055); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">Cyber Racer 2D</h1>
-            <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">Drive your way through endless obstacles. Use the <strong>Arrow Keys</strong> to steer.</p>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">Use <strong>Arrow Keys / AD</strong> on PC, or <strong>On-Screen Buttons</strong> on Mobile.</p>
             
             <div style="font-size: 1.2rem; font-weight: 800; color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);">Score: <span id="scoreText">0</span></div>
 
-            <!-- BUTTON TO TRIGGER START -->
-            <button id="startBtn" style="background: linear-gradient(135deg, #ff0055, #ff00aa); color: #fff; border: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4); font-size: 0.9rem; transition: all 0.2s;">
+            <button id="startBtn" style="background: linear-gradient(135deg, #ff0055, #ff00aa); color: #fff; border: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4); font-size: 0.9rem; transition: all 0.2s; z-index: 10;">
                 CLICK HERE TO START THE ENGINE
             </button>
 
-            <!-- KANVAS GAME BERWARNA HITAM SIBER (MANDATORY SAID WRAPPED) -->
-            <div style="border: 3px solid #00f0ff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); background: #000; margin-top: 0.5rem;">
-                <canvas id="gameCanvas" width="360" height="480" style="display: block;"></canvas>
+            <div style="border: 3px solid #00f0ff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); background: #000; margin-top: 0.5rem; max-width: 100%;">
+                <canvas id="gameCanvas" width="360" height="480" style="display: block; max-width: 100%; height: auto; outline: none;"></canvas>
             </div>
 
-            <p style="color: #64748b; font-size: 0.85rem; margin-top: 0.5rem;">Avoid hitting the green enemy hypercars! Controls: Left and Right Arrow Keys.</p>
+            <div class="mobile-controls">
+                <button class="touch-btn" id="leftBtn">◀ LEFT</button>
+                <button class="touch-btn" id="rightBtn">RIGHT ▶</button>
+            </div>
+
+            <p style="color: #64748b; font-size: 0.85rem; margin-top: 0.5rem;">Avoid hitting the green enemy hypercars!</p>
         </div>
     </main>
 
-    <!-- ENJIN LOGIK PERMAINAN JAVASCRIPT -->
     <script>
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
         const startBtn = document.getElementById("startBtn");
         const scoreText = document.getElementById("scoreText");
+        const leftBtn = document.getElementById("leftBtn");
+        const rightBtn = document.getElementById("rightBtn");
 
-        // Game state variables
         let gameActive = false;
         let score = 0;
         let playerX = 155; 
@@ -62,15 +101,28 @@
         let gameInterval;
         let keys = {};
 
-        // Track controls
+        // Mendengarkan kawalan Keyboard (PC)
         window.addEventListener("keydown", (e) => { keys[e.code] = true; });
         window.addEventListener("keyup", (e) => { keys[e.code] = false; });
 
+        // Mendengarkan kawalan Sentuhan Skrin (Mobile)
+        let isMovingLeft = false;
+        let isMovingRight = false;
+
+        leftBtn.addEventListener("touchstart", (e) => { e.preventDefault(); isMovingLeft = true; });
+        leftBtn.addEventListener("touchend", () => { isMovingLeft = false; });
+        rightBtn.addEventListener("touchstart", (e) => { e.preventDefault(); isMovingRight = true; });
+        rightBtn.addEventListener("touchend", () => { isMovingRight = false; });
+
+        // Backup untuk simulasi klik mouse pada butang mobile di PC inspect mode
+        leftBtn.addEventListener("mousedown", () => { isMovingLeft = true; });
+        leftBtn.addEventListener("mouseup", () => { isMovingLeft = false; });
+        rightBtn.addEventListener("mousedown", () => { isMovingRight = true; });
+        rightBtn.addEventListener("mouseup", () => { isMovingRight = false; });
+
         function drawPlayer() {
-            // Neon Cyan Cyber Car
             ctx.fillStyle = "#00f0ff";
             ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
-            // Wheels
             ctx.fillStyle = "#ffffff";
             ctx.fillRect(playerX - 4, playerY + 10, 4, 15);
             ctx.fillRect(playerX + playerWidth, playerY + 10, 4, 15);
@@ -81,17 +133,16 @@
         function spawnEnemy() {
             if (Math.random() < 0.02) {
                 let laneX = Math.floor(Math.random() * 3) * 120 + 35; 
-                enemies.push({ x: laneX, y: -80, width: 50, height: 70, speed: 4 + score * 0.1 });
+                enemies.push({ x: laneX, y: -80, width: 50, height: 70, speed: 5 + score * 0.1 });
             }
         }
 
         function drawEnemies() {
-            ctx.fillStyle = "#39ff14"; // Neon green obstacle cars
+            ctx.fillStyle = "#39ff14"; 
             enemies.forEach((enemy, index) => {
                 enemy.y += enemy.speed;
                 ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
 
-                // Collision detection algorithm
                 if (playerX < enemy.x + enemy.width &&
                     playerX + playerWidth > enemy.x &&
                     playerY < enemy.y + enemy.height &&
@@ -99,7 +150,6 @@
                     endGame();
                 }
 
-                // Score accumulator
                 if (enemy.y > canvas.height) {
                     enemies.splice(index, 1);
                     score++;
@@ -109,15 +159,19 @@
         }
 
         function updatePositions() {
-            if (keys["ArrowLeft"] && playerX > 10) playerX -= 5;
-            if (keys["ArrowRight"] && playerX < canvas.width - playerWidth - 10) playerX += 5;
+            // PEMBETULAN: Menggunakan tanda -= untuk bergerak ke kiri supaya tidak bergerak automatik
+            if ((keys["ArrowLeft"] || keys["KeyA"] || isMovingLeft) && playerX > 10) {
+                playerX -= 6;
+            }
+            if ((keys["ArrowRight"] || keys["KeyD"] || isMovingRight) && playerX < canvas.width - playerWidth - 10) {
+                playerX += 6;
+            }
         }
 
         function gameLoop() {
             if (!gameActive) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw Cybergrid Highway Roads
             ctx.strokeStyle = "rgba(0, 240, 255, 0.15)";
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -139,7 +193,8 @@
             enemies = [];
             scoreText.innerText = score;
             startBtn.style.display = "none";
-            gameInterval = setInterval(gameLoop, 1000 / 60); // 60 FPS Engine
+            
+            gameInterval = setInterval(gameLoop, 1000 / 60); 
         }
 
         function endGame() {
@@ -155,19 +210,18 @@
             
             ctx.fillStyle = "#fff";
             ctx.font = "14px Segoe UI";
-            ctx.fillText("Final Data Harvest: " + score, canvas.width / 2, canvas.height / 2 + 20);
+            ctx.fillText("Final Score: " + score, canvas.width / 2, canvas.height / 2 + 20);
             
             startBtn.style.display = "block";
             startBtn.innerText = "REBOOT SYSTEM ENGINES";
         }
 
-        // Draw initial placeholder look
         ctx.fillStyle = "#111";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "#555";
         ctx.font = "14px Segoe UI";
         ctx.textAlign = "center";
-        ctx.fillText("CANVAS ONLINE: WAITING FOR CORE ENGINE", canvas.width / 2, canvas.height / 2);
+        ctx.fillText("CANVAS ONLINE: READY TO RACE", canvas.width / 2, canvas.height / 2);
 
         startBtn.addEventListener("click", startGame);
     </script>
