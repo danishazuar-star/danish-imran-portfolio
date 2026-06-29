@@ -245,3 +245,55 @@ footer {
         text-align: center;
     }
 }
+/* ==========================================
+   CYBER RESUME TABLE FIXES (IMAGE_A1D25B.PNG)
+   ========================================== */
+
+.resume-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px; /* Memberi jarak menegak antara baris */
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resume-table th {
+    background-color: rgba(0, 240, 255, 0.05);
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 2px solid var(--primary);
+}
+
+.resume-table td {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px 20px; /* Memberikan ruang udara supaya teks tidak melekat */
+    color: #e2e8f0;
+    border-top: 1px solid rgba(0, 240, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Membuat lengkungan (radius) pada setiap baris jadual */
+.resume-table td:first-child {
+    border-left: 1px solid rgba(0, 240, 255, 0.1);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.resume-table td:last-child {
+    border-right: 1px solid rgba(0, 240, 255, 0.1);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Kesan highlight apabila tetikus lalu di atas baris */
+.resume-table tr:hover td {
+    background: rgba(0, 240, 255, 0.08);
+    color: #fff;
+    border-color: var(--primary);
+}
