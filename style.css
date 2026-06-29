@@ -36,13 +36,74 @@ header {
     border-bottom: 2px solid rgba(0, 240, 255, 0.1);
 }
 
+/* --- COMPREHENSIVE SIBER NAVBAR RESET --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 1.5rem 2rem; /* Lebar ruang atas dan bawah yang selamat */
+    background: #0b0f17;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    color: #00f0ff;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: #00f0ff;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+/* --- RESPONSIVE MOBILE OPTIMIZATION (MEDIA QUERY) --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Tukar susunan ke menegak jika skrin kecil */
+        gap: 1rem;
+        padding: 1.8rem 1rem 1.2rem 1rem; /* Tambah ruang atas supaya tidak tersangkut di siling fon */
+        text-align: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap; /* Membenarkan menu turun ke bawah jika skrin terlalu sempit */
+        gap: 1.2rem;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem; /* Kecilkan sedikit tulisan di fon supaya muat serentak */
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
 }
 
 .logo {
