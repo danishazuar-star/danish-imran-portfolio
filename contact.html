@@ -22,73 +22,64 @@
 
     <main style="max-width: 800px; margin: 4rem auto; padding: 0 2rem; min-height: 75vh;">
         
-        <!-- MAIN CYBER CARD CONTAINER -->
         <div style="background: #131a26; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); position: relative;">
             
             <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Secure Communication Gateway</h1>
             <p style="color: #94a3b8; margin-bottom: 2.5rem; font-size: 1.05rem;">Fill out the encrypted form below to route your message to my dashboard.</p>
 
-            <form style="display: flex; flex-direction: column; gap: 1.8rem;">
+            <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.8rem;">
                 
-                <!-- FIELD 1: FULL NAME -->
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                     <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Full Name</label>
-                    <input type="text" placeholder="John Doe" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
+                    <input type="text" name="name" placeholder="John Doe" required style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
                     <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Full name is explicitly required.</span>
                 </div>
 
-                <!-- FIELD 2: EMAIL -->
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                     <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Secure Email Address</label>
-                    <input type="email" placeholder="johndoe@example.com" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
+                    <input type="email" name="email" placeholder="johndoe@example.com" required style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
                     <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Please input a valid standard email format.</span>
                 </div>
 
-                <!-- FIELD 3: PASSWORD -->
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                     <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Account Security Password</label>
-                    <input type="password" placeholder="Minimum 6 characters" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
+                    <input type="password" name="password" placeholder="Minimum 6 characters" required style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
                     <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Password must be at least 6 alphanumeric characters long.</span>
                 </div>
 
-                <!-- FIELD 4: DATE OF BIRTH -->
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                     <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Date of Birth</label>
-                    <input type="date" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%; color-scheme: dark;">
+                    <input type="date" name="dob" required style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%; color-scheme: dark;">
                     <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Please select a valid date of birth calendar payload.</span>
                 </div>
 
-                <!-- FIELD 5: GENDER -->
                 <div style="display: flex; flex-direction: column; gap: 0.6rem;">
                     <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Identified Gender</label>
                     <div style="display: flex; gap: 2rem; align-items: center; background: rgba(255, 255, 255, 0.02); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
                         <label style="color: #e2e8f0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                            <input type="radio" name="gender" value="male" style="accent-color: #00f0ff; transform: scale(1.2);"> Male
+                            <input type="radio" name="gender" value="male" required style="accent-color: #00f0ff; transform: scale(1.2);"> Male
                         </label>
                         <label style="color: #e2e8f0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                            <input type="radio" name="gender" value="female" style="accent-color: #00f0ff; transform: scale(1.2);"> Female
+                            <input type="radio" name="gender" value="female" required style="accent-color: #00f0ff; transform: scale(1.2);"> Female
                         </label>
                     </div>
                     <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Gender identification selection is required.</span>
                 </div>
 
-                <!-- FIELD 6: UPLOAD PHOTO -->
                 <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Upload Authentication Photo</label>
-                    <input type="file" style="color: #94a3b8; font-size: 0.95rem; background: rgba(255, 255, 255, 0.02); padding: 10px; border-radius: 8px; border: 1px dashed rgba(0, 240, 255, 0.3); width: 100%;">
-                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Please upload a valid profile photo attachment file.</span>
+                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Message Content</label>
+                    <textarea name="message" placeholder="Type your message here..." required style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%; min-height: 120px; resize: vertical; font-family: inherit;"></textarea>
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Message payload cannot be empty.</span>
                 </div>
 
-                <!-- FIELD 7: TERMS CHECKBOX -->
                 <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;">
                     <label style="color: #e2e8f0; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; cursor: pointer; line-height: 1.4;">
-                        <input type="checkbox" style="accent-color: #00f0ff; transform: scale(1.2); margin-top: 3px;">
+                        <input type="checkbox" required style="accent-color: #00f0ff; transform: scale(1.2); margin-top: 3px;">
                         <span>I accept the standard security Terms and Conditions agreements.</span>
                     </label>
                     <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600; padding-left: 26px;">You must agree to the Terms and Conditions protocol.</span>
                 </div>
 
-                <!-- SUBMIT BUTTON -->
                 <button type="submit" style="background: linear-gradient(135deg, #00f0ff, #00b4d8); color: #000; border: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 1rem; border-radius: 12px; cursor: pointer; margin-top: 1rem; box-shadow: 0 5px 20px rgba(0, 240, 255, 0.3); transition: transform 0.2s;">
                     Transmit Message
                 </button>
@@ -100,6 +91,36 @@
     <footer style="text-align: center; padding: 2.5rem; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
         <p>&copy; 2026 TVETMARA Petaling Jaya. Designed & Built by Danish Imran. All System Rights Reserved.</p>
     </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Memasukkan Public Key/Account Token anda
+            emailjs.init("5U-63-fFn5BvkQFMm");
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Menghalang muat semula halaman (page reload)
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'TRANSMITTING...';
+            btn.disabled = true;
+
+            // Memasukkan Service ID dan Template ID anda
+            emailjs.sendForm('service_mbo1z1s', 'template_kju860g', this)
+                .then(function() {
+                    alert('Message successfully transmitted to Danish\'s Dashboard!');
+                    document.getElementById('contact-form').reset(); // Mengosongkan borang semula
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, function(error) {
+                    alert('Gateway Transmission Failed... Error Details: ' + JSON.stringify(error));
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                });
+        });
+    </script>
 
 </body>
 </html>
