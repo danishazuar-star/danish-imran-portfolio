@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive JavaScript App | Cyber Racer</title>
+    <title>Cyber Racer 2D | Mini Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,11 +11,6 @@
     <header>
         <nav class="navbar">
             <div class="logo">Danish<span>Imran.</span></div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="profile.html">Profile</a></li>
@@ -25,31 +20,156 @@
         </nav>
     </header>
 
-    <main>
-        <section class="card game-container">
-            <h2 style="color: var(--primary);">Cyber Racer 2D</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                Drive your way through endless obstacles. Use the <strong>Arrow Keys</strong> on your keyboard to steer left or right.
-            </p>
+    <main style="max-width: 800px; margin: 3rem auto; padding: 0 2rem; min-height: 80vh; text-align: center;">
+        
+        <!-- CARD MAIN FOR GAME CONTAINER -->
+        <div style="background: #131a26; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 2.5rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            
+            <h1 style="font-size: 2.2rem; font-weight: 900; background: linear-gradient(to right, #fff, #ff0055); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">Cyber Racer 2D</h1>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">Drive your way through endless obstacles. Use the <strong>Arrow Keys</strong> to steer.</p>
+            
+            <div style="font-size: 1.2rem; font-weight: 800; color: #00f0ff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);">Score: <span id="scoreText">0</span></div>
 
-            <div class="score-board">Score: <span id="score">0</span></div>
+            <!-- BUTTON TO TRIGGER START -->
+            <button id="startBtn" style="background: linear-gradient(135deg, #ff0055, #ff00aa); color: #fff; border: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4); font-size: 0.9rem; transition: all 0.2s;">
+                CLICK HERE TO START THE ENGINE
+            </button>
 
-            <div id="gameArea">
-                <div class="startScreen" id="startScreen">
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">CLICK HERE TO START THE ENGINE</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">
-                        Avoid hitting the green enemy hypercars!<br>
-                        Controls: Left and Right Arrow Keys.
-                    </p>
-                </div>
+            <!-- KANVAS GAME BERWARNA HITAM SIBER (MANDATORY SAID WRAPPED) -->
+            <div style="border: 3px solid #00f0ff; border-radius: 12px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); background: #000; margin-top: 0.5rem;">
+                <canvas id="gameCanvas" width="360" height="480" style="display: block;"></canvas>
             </div>
-        </section>
+
+            <p style="color: #64748b; font-size: 0.85rem; margin-top: 0.5rem;">Avoid hitting the green enemy hypercars! Controls: Left and Right Arrow Keys.</p>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 KKTM Petaling Jaya. Engineered by Danish Imran. All Rights Reserved.</p>
-    </footer>
+    <!-- ENJIN LOGIK PERMAINAN JAVASCRIPT -->
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const startBtn = document.getElementById("startBtn");
+        const scoreText = document.getElementById("scoreText");
 
-    <script src="script.js"></script>
+        // Game state variables
+        let gameActive = false;
+        let score = 0;
+        let playerX = 155; 
+        const playerY = 400;
+        const playerWidth = 50;
+        const playerHeight = 70;
+        let enemies = [];
+        let gameInterval;
+        let keys = {};
+
+        // Track controls
+        window.addEventListener("keydown", (e) => { keys[e.code] = true; });
+        window.addEventListener("keyup", (e) => { keys[e.code] = false; });
+
+        function drawPlayer() {
+            // Neon Cyan Cyber Car
+            ctx.fillStyle = "#00f0ff";
+            ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+            // Wheels
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(playerX - 4, playerY + 10, 4, 15);
+            ctx.fillRect(playerX + playerWidth, playerY + 10, 4, 15);
+            ctx.fillRect(playerX - 4, playerY + 45, 4, 15);
+            ctx.fillRect(playerX + playerWidth, playerY + 45, 4, 15);
+        }
+
+        function spawnEnemy() {
+            if (Math.random() < 0.02) {
+                let laneX = Math.floor(Math.random() * 3) * 120 + 35; 
+                enemies.push({ x: laneX, y: -80, width: 50, height: 70, speed: 4 + score * 0.1 });
+            }
+        }
+
+        function drawEnemies() {
+            ctx.fillStyle = "#39ff14"; // Neon green obstacle cars
+            enemies.forEach((enemy, index) => {
+                enemy.y += enemy.speed;
+                ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+
+                // Collision detection algorithm
+                if (playerX < enemy.x + enemy.width &&
+                    playerX + playerWidth > enemy.x &&
+                    playerY < enemy.y + enemy.height &&
+                    playerY + playerHeight > enemy.y) {
+                    endGame();
+                }
+
+                // Score accumulator
+                if (enemy.y > canvas.height) {
+                    enemies.splice(index, 1);
+                    score++;
+                    scoreText.innerText = score;
+                }
+            });
+        }
+
+        function updatePositions() {
+            if (keys["ArrowLeft"] && playerX > 10) playerX -= 5;
+            if (keys["ArrowRight"] && playerX < canvas.width - playerWidth - 10) playerX += 5;
+        }
+
+        function gameLoop() {
+            if (!gameActive) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Cybergrid Highway Roads
+            ctx.strokeStyle = "rgba(0, 240, 255, 0.15)";
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(120, 0); ctx.lineTo(120, canvas.height);
+            ctx.moveTo(240, 0); ctx.lineTo(240, canvas.height);
+            ctx.stroke();
+
+            updatePositions();
+            drawPlayer();
+            spawnEnemy();
+            drawEnemies();
+        }
+
+        function startGame() {
+            if (gameActive) return;
+            gameActive = true;
+            score = 0;
+            playerX = 155;
+            enemies = [];
+            scoreText.innerText = score;
+            startBtn.style.display = "none";
+            gameInterval = setInterval(gameLoop, 1000 / 60); // 60 FPS Engine
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameInterval);
+            ctx.fillStyle = "rgba(0,0,0,0.8)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "#ff0055";
+            ctx.font = "bold 28px Segoe UI";
+            ctx.textAlign = "center";
+            ctx.fillText("SYSTEM CRASHED", canvas.width / 2, canvas.height / 2 - 10);
+            
+            ctx.fillStyle = "#fff";
+            ctx.font = "14px Segoe UI";
+            ctx.fillText("Final Data Harvest: " + score, canvas.width / 2, canvas.height / 2 + 20);
+            
+            startBtn.style.display = "block";
+            startBtn.innerText = "REBOOT SYSTEM ENGINES";
+        }
+
+        // Draw initial placeholder look
+        ctx.fillStyle = "#111";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#555";
+        ctx.font = "14px Segoe UI";
+        ctx.textAlign = "center";
+        ctx.fillText("CANVAS ONLINE: WAITING FOR CORE ENGINE", canvas.width / 2, canvas.height / 2);
+
+        startBtn.addEventListener("click", startGame);
+    </script>
 </body>
 </html>
