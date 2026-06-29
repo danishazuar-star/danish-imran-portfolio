@@ -1,6 +1,6 @@
-// ==========================================
-// 1. RESPONSIVE NAVIGATION BAR TOGGLE
-// ==========================================
+// =========================================================================
+// 1. MOBILE RESPONSIVE NAVIGATION OVERLAY TOGGLE CONTROL
+// =========================================================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.querySelector('.nav-links');
 
@@ -10,18 +10,18 @@ if (mobileMenu) {
     });
 }
 
-// ==========================================
-// 2. CONTACT FORM VALIDATION
-// ==========================================
+// =========================================================================
+// 2. CONTACT FORM EXTENSIVE VALIDATION LOGIC ENGINE
+// =========================================================================
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Menghalang borang daripada refresh halaman secara automatik
+        e.preventDefault(); // Halt default browser server refresh sequence
         
         let isValid = true;
 
-        // Ambil elemen input dan ralat
+        // Fetch DOM nodes input payloads and respective error node pointers
         const name = document.getElementById('fullName');
         const email = document.getElementById('email');
         const password = document.getElementById('password');
@@ -31,7 +31,7 @@ if (contactForm) {
         const photo = document.getElementById('profilePhoto');
         const terms = document.getElementById('terms');
 
-        // Validasi Nama Penuh
+        // Full Name Validation Processing
         if (name.value.trim() === "") {
             document.getElementById('nameError').style.display = 'block';
             isValid = false;
@@ -39,7 +39,7 @@ if (contactForm) {
             document.getElementById('nameError').style.display = 'none';
         }
 
-        // Validasi E-mel
+        // Standard Regular Expression Architecture for Email Validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email.value)) {
             document.getElementById('emailError').style.display = 'block';
@@ -48,7 +48,7 @@ if (contactForm) {
             document.getElementById('emailError').style.display = 'none';
         }
 
-        // Validasi Kata Laluan
+        // Security Encryption Password Strength Length Rule Check
         if (password.value.length < 6) {
             document.getElementById('passwordError').style.display = 'block';
             isValid = false;
@@ -56,7 +56,7 @@ if (contactForm) {
             document.getElementById('passwordError').style.display = 'none';
         }
 
-        // Validasi Tarikh Lahir
+        // Calendar Object Structural Date Payload Check
         if (dob.value === "") {
             document.getElementById('dobError').style.display = 'block';
             isValid = false;
@@ -64,7 +64,7 @@ if (contactForm) {
             document.getElementById('dobError').style.display = 'none';
         }
 
-        // Validasi Jantina
+        // Radio Button Structural Array Gender Verification
         if (!genderMale.checked && !genderFemale.checked) {
             document.getElementById('genderError').style.display = 'block';
             isValid = false;
@@ -72,7 +72,7 @@ if (contactForm) {
             document.getElementById('genderError').style.display = 'none';
         }
 
-        // Validasi Muat Naik Fail
+        // File Architecture Upload Validation Check
         if (photo.files.length === 0) {
             document.getElementById('photoError').style.display = 'block';
             isValid = false;
@@ -80,7 +80,7 @@ if (contactForm) {
             document.getElementById('photoError').style.display = 'none';
         }
 
-        // Validasi Terma & Syarat Checkbox
+        // Checkbox Structural Agreement Verification Node
         if (!terms.checked) {
             document.getElementById('termsError').style.display = 'block';
             isValid = false;
@@ -88,48 +88,130 @@ if (contactForm) {
             document.getElementById('termsError').style.display = 'none';
         }
 
-        // Jika semua input sah, tunjukkan mesej kejayaan
+        // If All States Resolve as True, Trigger Success Payload
         if (isValid) {
-            alert("Borang anda berjaya dihantar! Terima kasih.");
+            alert("Secure Form Transmission Successful! Thank you.");
             contactForm.reset();
         }
     });
 }
 
-// ==========================================
-// 3. INTERACTIVE BMI CALCULATOR APPLICATION
-// ==========================================
-function calculateBMI() {
-    const weight = parseFloat(document.getElementById('weight').value);
-    const heightCm = parseFloat(document.getElementById('height').value);
-    const resultDiv = document.getElementById('bmi-result');
+// =========================================================================
+// 3. ADVANCED 2D CAR RACING GAME APPLICATION ENGINE
+// =========================================================================
+const startScreen = document.getElementById('startScreen');
+const gameArea = document.getElementById('gameArea');
+const scoreDisplay = document.getElementById('score');
 
-    if (isNaN(weight) || isNaN(heightCm) || weight <= 0 || heightCm <= 0) {
-        resultDiv.style.color = '#e74c3c';
-        resultDiv.innerHTML = "Sila masukkan nilai berat dan tinggi yang sah.";
-        return;
+let player = { speed: 5, score: 0 };
+let keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
+
+if (startScreen) {
+    startScreen.addEventListener('click', startGame);
+    document.addEventListener('keydown', (e) => { keys[e.key] = true; });
+    document.addEventListener('keyup', (e) => { keys[e.key] = false; });
+}
+
+// Detect mathematical overlapping bounding box intersection (Collision Detection)
+function isCollide(a, b) {
+    let aRect = a.getBoundingClientRect();
+    let bRect = b.getBoundingClientRect();
+
+    return !((aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right));
+}
+
+// Animate moving highway lane markers
+function moveLines() {
+    let lines = document.querySelectorAll('.roadLines');
+    lines.forEach(function(item) {
+        if (item.y >= 550) { item.y -= 600; }
+        item.y += player.speed;
+        item.style.top = item.y + "px";
+    });
+}
+
+// Animate and randomize computer opponent vehicles
+function moveEnemy(carElement) {
+    let enemies = document.querySelectorAll('.enemy');
+    enemies.forEach(function(item) {
+        if (isCollide(carElement, item)) {
+            endGame();
+        }
+
+        if (item.y >= 550) {
+            item.y = -300;
+            item.style.left = Math.floor(Math.random() * 350) + "px";
+        }
+        item.y += player.speed;
+        item.style.top = item.y + "px";
+    });
+}
+
+// Frame loop update callback execution
+function gamePlay() {
+    let carElement = document.querySelector('.car');
+    let road = gameArea.getBoundingClientRect();
+
+    if (player.start) {
+        moveLines();
+        moveEnemy(carElement);
+
+        if (keys.ArrowLeft && player.x > 0) { player.x -= player.speed; }
+        if (keys.ArrowRight && player.x < (road.width - 64)) { player.x += player.speed; }
+
+        carElement.style.left = player.x + "px";
+
+        window.requestAnimationFrame(gamePlay);
+        player.score++;
+        scoreDisplay.innerText = player.score;
+    }
+}
+
+// Reset core states and initialize game graphics loop
+function startGame() {
+    startScreen.classList.add('hide');
+    gameArea.innerHTML = ""; // Wipe area clean
+
+    player.start = true;
+    player.score = 0;
+    
+    // Create road track stripes
+    for (let x = 0; x < 5; x++) {
+        let roadLine = document.createElement('div');
+        roadLine.setAttribute('class', 'roadLines');
+        roadLine.y = (x * 150);
+        roadLine.style.top = roadLine.y + "px";
+        gameArea.appendChild(roadLine);
     }
 
-    // Tukar tinggi dari cm ke meter
-    const heightM = heightCm / 100;
-    const bmi = weight / (heightM * heightM);
-    let category = "";
-    let color = "";
+    // Spawn player vehicle
+    let carElement = document.createElement('div');
+    carElement.setAttribute('class', 'car');
+    gameArea.appendChild(carElement);
 
-    if (bmi < 18.5) {
-        category = "Kurang Berat Badan";
-        color = "#e67e22";
-    } else if (bmi >= 18.5 && bmi < 24.9) {
-        category = "Berat Badan Ideal / Normal";
-        color = "#2ecc71";
-    } else if (bmi >= 25 && bmi < 29.9) {
-        category = "Lebih Berat Badan";
-        color = "#f1c40f";
-    } else {
-        category = "Obesiti";
-        color = "#e74c3c";
+    player.x = carElement.offsetLeft;
+    player.y = carElement.offsetTop;
+
+    // Spawn array of automated enemy computer vehicles
+    for (let x = 0; x < 3; x++) {
+        let enemyCar = document.createElement('div');
+        enemyCar.setAttribute('class', 'enemy');
+        enemyCar.y = ((x + 1) * 350) * -1;
+        enemyCar.style.top = enemyCar.y + "px";
+        enemyCar.style.left = Math.floor(Math.random() * 350) + "px";
+        gameArea.appendChild(enemyCar);
     }
 
-    resultDiv.style.color = color;
-    resultDiv.innerHTML = `BMI Anda: ${bmi.toFixed(2)}<br>Kategori: ${category}`;
+    window.requestAnimationFrame(gamePlay);
+}
+
+// Stop frame cycle and trigger game over user text
+function endGame() {
+    player.start = false;
+    startScreen.classList.remove('hide');
+    startScreen.innerHTML = `
+        <h3 style="color: var(--accent); margin-bottom: 10px;">SYSTEM CRASH - GAME OVER</h3>
+        <p style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">Your Final Score: ${player.score}</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Click here to reboot engine & restart.</p>
+    `;
 }
