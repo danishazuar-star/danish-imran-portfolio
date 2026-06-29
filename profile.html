@@ -5,6 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile & Experience | Resume</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Gaya tambahan khusus untuk susunan maklumat baharu yang responsif */
+        .bio-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+        }
+
+        .bio-data {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .bio-data h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .bio-data p {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .badge {
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: #00f0ff;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.alt {
+            background: rgba(255, 0, 85, 0.05);
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            color: #ff0055;
+        }
+
+        @media (max-width: 768px) {
+            .bio-section {
+                padding: 1.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .bio-data h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -20,95 +86,123 @@
         </nav>
     </header>
 
-    <!-- Menggunakan inline padding untuk memaksa ruang kandungan terbentuk dengan kemas -->
-    <main style="max-width: 1100px; margin: 4rem auto; padding: 0 2rem; min-height: 75vh;">
+    <main style="max-width: 1100px; margin: 2rem auto; padding: 0 1rem; min-height: 75vh;">
         
-        <!-- FORCE INLINE STYLE UNTUK KAD SKRIN -->
-        <div style="background: #131a26; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); position: relative;">
+        <div class="card-gempak" style="padding: 2rem 1.5rem;">
             
             <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Professional Background</h1>
-            <p style="color: #94a3b8; margin-bottom: 3rem; font-size: 1.05rem;">A deep dive into my educational trajectory, specialized domain skills, and technical accomplishments.</p>
+            <p style="color: #94a3b8; margin-bottom: 2.5rem; font-size: 1.05rem;">A deep dive into my identity, educational trajectory, specialized domain skills, and technical accomplishments.</p>
 
-            <!-- ================= SECTION 1 ================= -->
-            <div class="section-title-gempak" style="font-size: 1.3rem; color: #fff; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Educational Qualifications</div>
-            
-            <table style="width: 100%; border-collapse: separate; border-spacing: 0 12px; margin-bottom: 2.5rem;">
+            <div class="bio-section">
+                <div class="bio-data">
+                    <span style="color: #00f0ff; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Engineering Candidate</span>
+                    <h2>MUHAMMAD DANISH IMRAN BIN AZUAR HAFEZ</h2>
+                    <p><strong>Phone:</strong> +60 13-747 4619</p>
+                    <p><strong>Location:</strong> Selangor / Kuala Lumpur, Malaysia</p>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <strong style="color: #fff; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Languages Spoken:</strong>
+                        <div class="badge-container">
+                            <span class="badge">Bahasa Melayu (Native)</span>
+                            <span class="badge">English (Professional)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-data" style="border-left: 1px solid rgba(255,255,255,0.05); padding-left: 1.5rem; min-width: 250px;">
+                    <strong style="color: #00f0ff; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Core Technical Interests:</strong>
+                    <div class="badge-container" style="margin-bottom: 1.5rem;">
+                        <span class="badge alt">IoT Architecture</span>
+                        <span class="badge alt">Web Development</span>
+                        <span class="badge alt">Automation Systems</span>
+                    </div>
+
+                    <strong style="color: #fff; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">Hobbies & Personal Quirks:</strong>
+                    <div class="badge-container">
+                        <span class="badge" style="color: #94a3b8; border-color: rgba(255,255,255,0.1);">🏸 Badminton</span>
+                        <span class="badge" style="color: #94a3b8; border-color: rgba(255,255,255,0.1);">💪 Gym & Fitness</span>
+                        <span class="badge" style="color: #94a3b8; border-color: rgba(255,255,255,0.1);">📸 Photography</span>
+                        <span class="badge" style="color: #94a3b8; border-color: rgba(255,255,255,0.1);">🎵 Playing Music</span>
+                        <span class="badge" style="color: #94a3b8; border-color: rgba(255,255,255,0.1);">🎬 Watching Movies</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title-gempak" style="margin-top: 1rem;">Educational Qualifications</div>
+            <table class="responsive-table">
                 <thead>
                     <tr>
-                        <th style="background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 14px 20px; text-align: left; font-weight: 700; border-bottom: 2px solid #00f0ff; width: 25%;">Timeline</th>
-                        <th style="background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 14px 20px; text-align: left; font-weight: 700; border-bottom: 2px solid #00f0ff; width: 35%;">Institution</th>
-                        <th style="background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 14px 20px; text-align: left; font-weight: 700; border-bottom: 2px solid #00f0ff; width: 40%;">Certification / Focus Area</th>
+                        <th style="width: 25%;">Timeline</th>
+                        <th style="width: 35%;">Institution</th>
+                        <th style="width: 40%;">Certification / Focus Area</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>2024 - 2026</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1);">TVETMARA Petaling Jaya</td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">Diploma in Electronic Engineering (Internet of Things)</td>
+                        <td><strong>2024 - 2026</strong></td>
+                        <td>TVETMARA Petaling Jaya</td>
+                        <td>Diploma in Electronic Engineering (Internet of Things)</td>
                     </tr>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>2019 - 2023</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1);">Secondary School</td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">Sijil Pelajaran Malaysia (SPM) - Engineering Stream</td>
+                        <td><strong>2019 - 2023</strong></td>
+                        <td>Secondary School</td>
+                        <td>Sijil Pelajaran Malaysia (SPM) - Engineering Stream</td>
                     </tr>
                 </tbody>
             </table>
 
-            <!-- ================= SECTION 2 ================= -->
-            <div class="section-title-gempak" style="font-size: 1.3rem; color: #fff; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Engineering & Programming Toolsets</div>
-            
-            <table style="width: 100%; border-collapse: separate; border-spacing: 0 12px; margin-bottom: 2.5rem;">
+            <div class="section-title-gempak">Engineering & Programming Toolsets</div>
+            <table class="responsive-table">
                 <thead>
                     <tr>
-                        <th style="background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 14px 20px; text-align: left; font-weight: 700; border-bottom: 2px solid #00f0ff; width: 30%;">Domain</th>
-                        <th style="background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 14px 20px; text-align: left; font-weight: 700; border-bottom: 2px solid #00f0ff; width: 70%;">Acquired Core Expertise</th>
+                        <th style="width: 30%;">Domain</th>
+                        <th style="width: 70%;">Acquired Core Expertise</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>Software Languages</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">Embedded C++, JavaScript (ES6+), HTML5, CSS3, Python</td>
+                        <td><strong>Software Languages</strong></td>
+                        <td>Embedded C++, JavaScript (ES6+), HTML5, CSS3, Python</td>
                     </tr>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>IoT Ecosystems</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">ESP32 DevKit, Arduino MCU, Blynk Cloud Platform, Sensor Interfacing</td>
+                        <td><strong>IoT Ecosystems</strong></td>
+                        <td>ESP32 DevKit, Arduino MCU, Blynk Cloud Platform, Sensor Interfacing</td>
                     </tr>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>Industrial Automation</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">OMRON CX-One Framework, PLC Ladder Logic, Sequential Function Charts (SFC)</td>
+                        <td><strong>Industrial Automation</strong></td>
+                        <td>OMRON CX-One Framework, PLC Ladder Logic, Sequential Function Charts (SFC)</td>
                     </tr>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>AI Integration</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">Conceptual deployment of PyTorch Artificial Neural Network (ANN) modules</td>
+                        <td><strong>AI Integration</strong></td>
+                        <td>Conceptual deployment of PyTorch Artificial Neural Network (ANN) modules</td>
                     </tr>
                 </tbody>
             </table>
 
-            <!-- ================= SECTION 3 ================= -->
-            <div class="section-title-gempak" style="font-size: 1.3rem; color: #fff; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700;">Key Technical Accomplishments</div>
-            
-            <table style="width: 100%; border-collapse: separate; border-spacing: 0 12px;">
+            <div class="section-title-gempak">Key Technical Accomplishments</div>
+            <table class="responsive-table">
                 <thead>
                     <tr>
-                        <th style="background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 14px 20px; text-align: left; font-weight: 700; border-bottom: 2px solid #00f0ff; width: 30%;">Project Milestone</th>
-                        <th style="background: rgba(0, 240, 255, 0.1); color: #00f0ff; padding: 14px 20px; text-align: left; font-weight: 700; border-bottom: 2px solid #00f0ff; width: 70%;">Description & Technical Execution</th>
+                        <th style="width: 30%;">Project Milestone</th>
+                        <th style="width: 70%;">Description & Technical Execution</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>Aero Guard Station</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">Designed and successfully compiled an autonomous IoT environmental monitoring node utilizing wireless microcontrollers over Blynk architectures.</td>
+                        <td><strong>Aero Guard Station</strong></td>
+                        <td>Designed and successfully compiled an autonomous IoT environmental monitoring node utilizing wireless microcontrollers over Blynk architectures.</td>
                     </tr>
                     <tr>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #fff; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-left: 1px solid rgba(0, 240, 255, 0.1); border-top-left-radius: 8px; border-bottom-left-radius: 8px;"><strong>Predictive Intelligence Model</strong></td>
-                        <td style="background: rgba(255, 255, 255, 0.03); padding: 16px 20px; color: #e2e8f0; border-top: 1px solid rgba(0, 240, 255, 0.1); border-bottom: 1px solid rgba(0, 240, 255, 0.1); border-right: 1px solid rgba(0, 240, 255, 0.1); border-top-right-radius: 8px; border-bottom-right-radius: 8px;">Constructed a functional predictive mathematical model targeting optimized operational forecasting frameworks.</td>
+                        <td><strong>Predictive Intelligence Model</strong></td>
+                        <td>Constructed a functional predictive mathematical model targeting optimized operational forecasting frameworks.</td>
                     </tr>
                 </tbody>
             </table>
+            
         </div>
     </main>
 
-    <footer style="text-align: center; padding: 2.5rem; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <footer>
         <p>&copy; 2026 TVETMARA Petaling Jaya. Designed & Built by Danish Imran. All System Rights Reserved.</p>
     </footer>
 
