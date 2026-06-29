@@ -1,53 +1,53 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Saya | Kalkulator BMI Interaktif</title>
+    <title>Interactive JavaScript App | Cyber Racer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <nav class="navbar">
-            <div class="logo">IoT Portfolio</div>
+            <div class="logo">Danish<span>Imran.</span></div>
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Utama</a></li>
-                <li><a href="profile.html">Profil</a></li>
-                <li><a href="contact.html">Hubungi</a></li>
-                <li><a href="game.html" class="active">Aplikasi JS</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="game.html" class="active">Racing Game</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="card app-container">
-            <h2>Kalkulator BMI Interaktif</h2>
-            <p style="margin-bottom: 1.5rem;">Kira Indeks Jisim Badan (BMI) anda menggunakan aplikasi JavaScript di bawah.</p>
+        <section class="card game-container">
+            <h2 style="color: var(--primary);">Cyber Racer 2D</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">
+                Drive your way through endless obstacles. Use the <strong>Arrow Keys</strong> on your keyboard to steer left or right.
+            </p>
 
-            <div class="form-group" style="text-align: left;">
-                <label for="weight">Berat Badan (kg):</label>
-                <input type="number" id="weight" class="form-control" placeholder="Contoh: 65">
+            <div class="score-board">Score: <span id="score">0</span></div>
+
+            <div id="gameArea">
+                <div class="startScreen" id="startScreen">
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">CLICK HERE TO START THE ENGINE</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">
+                        Avoid hitting the green enemy hypercars!<br>
+                        Controls: Left and Right Arrow Keys.
+                    </p>
+                </div>
             </div>
-
-            <div class="form-group" style="text-align: left;">
-                <label for="height">Tinggi (cm):</label>
-                <input type="number" id="height" class="form-control" placeholder="Contoh: 170">
-            </div>
-
-            <button class="btn" onclick="calculateBMI()">Kira BMI Now</button>
-
-            <div id="bmi-result"></div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 KKTM Petaling Jaya. Hak Cipta Terpelihara.</p>
+        <p>&copy; 2026 KKTM Petaling Jaya. Engineered by Danish Imran. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
