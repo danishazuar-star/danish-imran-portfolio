@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect with Me | Secure Contact Gateway</title>
+    <title>Contact Gateway | Secure Communication</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,11 +11,6 @@
     <header>
         <nav class="navbar">
             <div class="logo">Danish<span>Imran.</span></div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="profile.html">Profile</a></li>
@@ -25,70 +20,86 @@
         </nav>
     </header>
 
-    <main>
-        <section class="card" style="max-width: 650px; margin: 0 auto;">
-            <h2 style="color: var(--primary); margin-bottom: 0.5rem;">Secure Communication Gateway</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Fill out the encrypted form below to route your message to my dashboard.</p>
+    <main style="max-width: 800px; margin: 4rem auto; padding: 0 2rem; min-height: 75vh;">
+        
+        <!-- MAIN CYBER CARD CONTAINER -->
+        <div style="background: #131a26; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); position: relative;">
+            
+            <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Secure Communication Gateway</h1>
+            <p style="color: #94a3b8; margin-bottom: 2.5rem; font-size: 1.05rem;">Fill out the encrypted form below to route your message to my dashboard.</p>
 
-            <form id="contactForm" novalidate>
-                <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" class="form-control" placeholder="John Doe">
-                    <div class="error-msg" id="nameError">Full name is explicitly required.</div>
+            <form style="display: flex; flex-direction: column; gap: 1.8rem;">
+                
+                <!-- FIELD 1: FULL NAME -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Full Name</label>
+                    <input type="text" placeholder="John Doe" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Full name is explicitly required.</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Secure Email Address</label>
-                    <input type="email" id="email" class="form-control" placeholder="johndoe@example.com">
-                    <div class="error-msg" id="emailError">Please input a valid standard email format.</div>
+                <!-- FIELD 2: EMAIL -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Secure Email Address</label>
+                    <input type="email" placeholder="johndoe@example.com" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Please input a valid standard email format.</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="password">Account Security Password</label>
-                    <input type="password" id="password" class="form-control" placeholder="Minimum 6 characters">
-                    <div class="error-msg" id="passwordError">Password must be at least 6 alphanumeric characters long.</div>
+                <!-- FIELD 3: PASSWORD -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Account Security Password</label>
+                    <input type="password" placeholder="Minimum 6 characters" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%;">
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Password must be at least 6 alphanumeric characters long.</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" class="form-control">
-                    <div class="error-msg" id="dobError">Please select a valid date of birth calendar payload.</div>
+                <!-- FIELD 4: DATE OF BIRTH -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Date of Birth</label>
+                    <input type="date" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 8px; padding: 12px 16px; color: #fff; font-size: 1rem; outline: none; width: 100%; color-scheme: dark;">
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Please select a valid date of birth calendar payload.</span>
                 </div>
 
-                <div class="form-group">
-                    <label>Identified Gender</label>
-                    <div style="margin-top: 0.5rem;">
-                        <input type="radio" id="male" name="gender" value="Male"> 
-                        <label style="display:inline; font-weight:normal; margin-right: 20px;" for="male">Male</label>
-                        <input type="radio" id="female" name="gender" value="Female"> 
-                        <label style="display:inline; font-weight:normal;" for="female">Female</label>
+                <!-- FIELD 5: GENDER -->
+                <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Identified Gender</label>
+                    <div style="display: flex; gap: 2rem; align-items: center; background: rgba(255, 255, 255, 0.02); padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <label style="color: #e2e8f0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="radio" name="gender" value="male" style="accent-color: #00f0ff; transform: scale(1.2);"> Male
+                        </label>
+                        <label style="color: #e2e8f0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="radio" name="gender" value="female" style="accent-color: #00f0ff; transform: scale(1.2);"> Female
+                        </label>
                     </div>
-                    <div class="error-msg" id="genderError">Gender identification selection is required.</div>
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Gender identification selection is required.</span>
                 </div>
 
-                <div class="form-group">
-                    <label for="profilePhoto">Upload Authentication Photo</label>
-                    <input type="file" id="profilePhoto" class="form-control" accept="image/*">
-                    <div class="error-msg" id="photoError">Please upload a valid profile photo attachment file.</div>
+                <!-- FIELD 6: UPLOAD PHOTO -->
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <label style="color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px;">Upload Authentication Photo</label>
+                    <input type="file" style="color: #94a3b8; font-size: 0.95rem; background: rgba(255, 255, 255, 0.02); padding: 10px; border-radius: 8px; border: 1px dashed rgba(0, 240, 255, 0.3); width: 100%;">
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600;">Please upload a valid profile photo attachment file.</span>
                 </div>
 
-                <div class="form-group" style="display: flex; flex-direction: column;">
-                    <div>
-                        <input type="checkbox" id="terms" style="margin-right: 8px;">
-                        <label style="display:inline; font-weight:normal;" for="terms">I accept the standard security Terms and Conditions agreements.</label>
-                    </div>
-                    <div class="error-msg" id="termsError">You must agree to the Terms and Conditions protocol.</div>
+                <!-- FIELD 7: TERMS CHECKBOX -->
+                <div style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;">
+                    <label style="color: #e2e8f0; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; cursor: pointer; line-height: 1.4;">
+                        <input type="checkbox" style="accent-color: #00f0ff; transform: scale(1.2); margin-top: 3px;">
+                        <span>I accept the standard security Terms and Conditions agreements.</span>
+                    </label>
+                    <span style="color: #ff0055; font-size: 0.85rem; font-weight: 600; padding-left: 26px;">You must agree to the Terms and Conditions protocol.</span>
                 </div>
 
-                <button type="submit" class="btn">Transmit Message</button>
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" style="background: linear-gradient(135deg, #00f0ff, #00b4d8); color: #000; border: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; padding: 1rem; border-radius: 12px; cursor: pointer; margin-top: 1rem; box-shadow: 0 5px 20px rgba(0, 240, 255, 0.3); transition: transform 0.2s;">
+                    Transmit Message
+                </button>
+
             </form>
-        </section>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 KKTM Petaling Jaya. Engineered by Danish Imran. All Rights Reserved.</p>
+    <footer style="text-align: center; padding: 2.5rem; color: #94a3b8; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <p>&copy; 2026 TVETMARA Petaling Jaya. Designed & Built by Danish Imran. All System Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
