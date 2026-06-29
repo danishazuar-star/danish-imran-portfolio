@@ -1,19 +1,26 @@
-/* --- UNIVERSAL RESET --- */
+/* ==========================================================================
+   1. UNIVERSAL RESET & CYBERPUNK CORE BASE
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
 body {
     background-color: #0b0f17;
-    color: #fff;
-    overflow-x: hidden; /* Menghalang skrin daripada boleh di-scroll ke kanan */
+    color: #ffffff;
+    overflow-x: hidden;
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- CYBERPUNK NAVBAR CONTAINER --- */
+/* ==========================================================================
+   2. RESPONSIVE NAVBAR SYSTEMS
+   ========================================================================== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -50,7 +57,7 @@ body {
     font-size: 0.95rem;
     font-weight: 600;
     transition: all 0.2s ease;
-    white-space: nowrap; /* Menghalang perkataan menu daripada terputus dua baris */
+    white-space: nowrap;
 }
 
 .nav-links a:hover, 
@@ -59,19 +66,126 @@ body {
     text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 
-/* --- PROFILE TABLE MOBILE OPTIMIZATION --- */
-/* Untuk komputer, jadual kekal sebagai jadual standard */
+/* ==========================================================================
+   3. HOME PAGE Layout (.card-gempak & .hero-flex)
+   ========================================================================== */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card-gempak {
+    background: #131a26;
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 24px;
+    padding: 3rem;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-flex {
+    display: flex;
+    align-items: center;
+    gap: 4rem; /* Jarak antara gambar dan teks di komputer */
+}
+
+.profile-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.profile-img-gempak {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #00f0ff;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+}
+
+.hero-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.subtitle {
+    color: #00f0ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.hero-text h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+.section-title-gempak {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #00f0ff;
+    padding-left: 10px;
+}
+
+/* BUTTON CYBER */
+.btn-cyber {
+    display: inline-block;
+    background: transparent;
+    color: #00f0ff;
+    border: 2px solid #00f0ff;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-cyber:hover {
+    background: #00f0ff;
+    color: #0b0f17;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   4. PROFILE PAGE TABLE BASE STYLES
+   ========================================================================== */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     background: rgba(19, 26, 38, 0.4);
     border-radius: 8px;
     overflow: hidden;
 }
 
 th, td {
-    padding: 1rem;
+    padding: 1.2rem 1rem;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -82,46 +196,102 @@ th {
     background: rgba(0, 240, 255, 0.05);
 }
 
-/* --- RESPONSIVE MEDIA QUERY FOR SMARTPHONES --- */
+/* ==========================================================================
+   5. GLOBAL FOOTER
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #64748b;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: #0b0f17;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE MOBILE OPTIMIZATION (MEDIA QUERY < 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
     
-    /* Perbaikan Menu Atas */
+    /* Perbaikan Susunan Navbar */
     .navbar {
-        flex-direction: column; /* Tukar susunan logo ke atas, menu ke bawah */
+        flex-direction: column;
         gap: 1.2rem;
-        padding: 1.8rem 1rem 1rem 1rem; /* Tambah ruang atas supaya tidak melekat pada bar status fon */
+        padding: 1.8rem 1rem 1rem 1rem;
         text-align: center;
     }
 
     .nav-links {
         justify-content: center;
-        flex-wrap: wrap; /* Membenarkan menu tersusun rapi tanpa terkeluar skrin */
-        gap: 0.8rem 1.2rem; /* Jarak antara menu */
+        flex-wrap: wrap;
+        gap: 0.8rem 1.2rem;
         width: 100%;
     }
 
     .nav-links a {
-        font-size: 0.8rem; /* Perkecil sedikit tulisan di fon */
-        letter-spacing: 0.5px;
+        font-size: 0.85rem;
     }
 
-    /* Perbaikan Magik: Tukar Jadual Lama Menjadi Kad Menegak yang Cantik di Fon */
+    /* Perbaikan Total Struktur HOME PAGE (Menegak Semula di Fon) */
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    .card-gempak {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .hero-flex {
+        flex-direction: column; /* Gambar naik ke atas, teks turun ke bawah */
+        gap: 2rem;
+    }
+
+    .profile-wrapper {
+        min-width: 100%;
+    }
+
+    .profile-img-gempak {
+        width: 220px;
+        height: 220px; /* Saiz gambar dikecilkan sedikit di skrin fon */
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    .hero-text p {
+        font-size: 0.95rem;
+        text-align: justify;
+    }
+
+    .btn-cyber {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    /* Perbaikan Jadual PROFILE PAGE Jadi Kad Menegak */
     table, thead, tbody, th, td, tr {
-        display: block; 
+        display: block;
         width: 100%;
     }
 
     thead {
-        display: none; /* Sembunyikan header jadual asal yang buat sempit */
+        display: none;
     }
 
     tr {
         margin-bottom: 1.5rem;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(0, 240, 255, 0.1);
         border-radius: 12px;
         padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     td {
@@ -129,10 +299,9 @@ th {
         padding: 0.5rem 0;
         border-bottom: none;
         font-size: 0.9rem;
-        position: relative;
     }
 
-    /* Tambahkan label data di atas setiap info */
+    /* Label Dinamik untuk Info Jadual */
     td:nth-of-type(1)::before {
         content: "Timeline: ";
         color: #00f0ff;
@@ -161,11 +330,5 @@ th {
         font-size: 0.75rem;
         text-transform: uppercase;
         margin-bottom: 0.2rem;
-    }
-    
-    /* Laraskan padding container utama di profile.html dan game.html */
-    main, .container, div[style*="padding"] {
-        padding: 1.5rem 1rem !important;
-        max-width: 100% !important;
     }
 }
