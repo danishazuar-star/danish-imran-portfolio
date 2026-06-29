@@ -1,86 +1,92 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Saya | Hubungi Kami</title>
+    <title>Connect with Me | Secure Contact Gateway</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <nav class="navbar">
-            <div class="logo">IoT Portfolio</div>
+            <div class="logo">Danish<span>Imran.</span></div>
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Utama</a></li>
-                <li><a href="profile.html">Profil</a></li>
-                <li><a href="contact.html" class="active">Hubungi</a></li>
-                <li><a href="game.html">Aplikasi JS</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="game.html">Racing Game</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="card" style="max-width: 600px; margin: 0 auto;">
-            <h2>Borang Hubungi Saya</h2>
-            <p style="margin-bottom: 1.5rem;">Sila isi maklumat anda di bawah dengan lengkap.</p>
+        <section class="card" style="max-width: 650px; margin: 0 auto;">
+            <h2 style="color: var(--primary); margin-bottom: 0.5rem;">Secure Communication Gateway</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Fill out the encrypted form below to route your message to my dashboard.</p>
 
             <form id="contactForm" novalidate>
                 <div class="form-group">
-                    <label for="fullName">Nama Penuh:</label>
-                    <input type="text" id="fullName" class="form-control">
-                    <div class="error-msg" id="nameError">Nama penuh diperlukan.</div>
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="John Doe">
+                    <div class="error-msg" id="nameError">Full name is explicitly required.</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Alamat E-mel:</label>
-                    <input type="email" id="email" class="form-control">
-                    <div class="error-msg" id="emailError">Format e-mel tidak sah.</div>
+                    <label for="email">Secure Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="johndoe@example.com">
+                    <div class="error-msg" id="emailError">Please input a valid standard email format.</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Kata Laluan:</label>
-                    <input type="password" id="password" class="form-control">
-                    <div class="error-msg" id="passwordError">Kata laluan sekurang-kurangnya 6 aksara.</div>
+                    <label for="password">Account Security Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Minimum 6 characters">
+                    <div class="error-msg" id="passwordError">Password must be at least 6 alphanumeric characters long.</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="dob">Tarikh Lahir:</label>
+                    <label for="dob">Date of Birth</label>
                     <input type="date" id="dob" class="form-control">
-                    <div class="error-msg" id="dobError">Sila pilih tarikh lahir anda.</div>
+                    <div class="error-msg" id="dobError">Please select a valid date of birth calendar payload.</div>
                 </div>
 
                 <div class="form-group">
-                    <label>Jantina:</label>
-                    <input type="radio" id="male" name="gender" value="Lelaki"> <label style="display:inline; font-weight:normal;" for="male">Lelaki</label>
-                    <input type="radio" id="female" name="gender" value="Perempuan" style="margin-left: 15px;"> <label style="display:inline; font-weight:normal;" for="female">Perempuan</label>
-                    <div class="error-msg" id="genderError">Sila pilih jantina anda.</div>
+                    <label>Identified Gender</label>
+                    <div style="margin-top: 0.5rem;">
+                        <input type="radio" id="male" name="gender" value="Male"> 
+                        <label style="display:inline; font-weight:normal; margin-right: 20px;" for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="Female"> 
+                        <label style="display:inline; font-weight:normal;" for="female">Female</label>
+                    </div>
+                    <div class="error-msg" id="genderError">Gender identification selection is required.</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="profilePhoto">Muat Naik Foto Profil:</label>
+                    <label for="profilePhoto">Upload Authentication Photo</label>
                     <input type="file" id="profilePhoto" class="form-control" accept="image/*">
-                    <div class="error-msg" id="photoError">Sila muat naik foto profil anda.</div>
+                    <div class="error-msg" id="photoError">Please upload a valid profile photo attachment file.</div>
                 </div>
 
-                <div class="form-group">
-                    <input type="checkbox" id="terms">
-                    <label style="display:inline; font-weight:normal;" for="terms">Saya bersetuju dengan Terma & Syarat.</label>
-                    <div class="error-msg" id="termsError">Anda mesti bersetuju dengan terma dan syarat.</div>
+                <div class="form-group" style="display: flex; flex-direction: column;">
+                    <div>
+                        <input type="checkbox" id="terms" style="margin-right: 8px;">
+                        <label style="display:inline; font-weight:normal;" for="terms">I accept the standard security Terms and Conditions agreements.</label>
+                    </div>
+                    <div class="error-msg" id="termsError">You must agree to the Terms and Conditions protocol.</div>
                 </div>
 
-                <button type="submit" class="btn">Hantar Maklumat</button>
+                <button type="submit" class="btn">Transmit Message</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 KKTM Petaling Jaya. Hak Cipta Terpelihara.</p>
+        <p>&copy; 2026 KKTM Petaling Jaya. Engineered by Danish Imran. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
